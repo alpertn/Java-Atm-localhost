@@ -14,7 +14,7 @@ public class databaseconfig {
     public DataSource DataSource() {
         DriverManagerDataSource datasource = new DriverManagerDataSource();
         datasource.setDriverClassName("com.mysql.jdbc.Driver");
-        datasource.setUrl("jdbc:mysql://localhost:3399/atm_db?useSSL=false");
+        datasource.setUrl("jdbc:mysql://localhost:3399/atm_db?useSSL=false"); // database baglantısı
         datasource.setUsername("root");
         datasource.setPassword("root");
         return datasource;
