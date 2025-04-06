@@ -19,6 +19,7 @@ public class User {
         this.tckimlikno = tckimlikno;
         this.birthdate = birthdate;
     }
+
     public Long getId(){
         return id;
     }
@@ -39,9 +40,11 @@ public class User {
 
     }
     public String getTckimlikno(){
+
         return tckimlikno;
     }
     public void SetTckimlikno(String tckimlikno){
+
         this.tckimlikno = tckimlikno;
     }
     public LocalDate getBirthdate(){

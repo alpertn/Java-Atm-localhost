@@ -21,14 +21,35 @@ public class transaction {
 
 
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
-    public String getFromIban() { return fromIban; }
-    public void setFromIban(String fromIban) { this.fromIban = fromIban; }
-    public String getToIban() { return toIban; }
-    public void setToIban(String toIban) { this.toIban = toIban; }
-    public double getAmount() { return amount; }
-    public void setAmount(double amount) { this.amount = amount; }
-    public LocalDateTime getTransactionDate() { return transactionDate; }
-    public void setTransactionDate(LocalDateTime transactionDate) { this.transactionDate = transactionDate; }
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
+    }
+    public String getFromIban() {
+        return fromIban;
+    }
+    public void setFromIban(String fromIban) {
+        this.fromIban = fromIban;
+    }
+    public String getToIban() {
+        return toIban;
+    }
+    public void setToIban(String toIban) {
+        this.toIban = toIban;
+    }
+    public double getAmount() {
+        return amount;
+
+    }
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+    public LocalDateTime getTransactionDate() {
+        return transactionDate;
+    }
+    public void setTransactionDate(LocalDateTime transactionDate) {
+        this.transactionDate = transactionDate;
+    }
 }

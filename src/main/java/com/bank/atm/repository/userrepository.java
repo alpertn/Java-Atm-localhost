@@ -28,4 +28,12 @@ public class userrepository {
         return user;
     };
 
+    public User Save(User user){
+        String sql = "INSERT INTO users (name, surname, tckimlikno, birthdate) VALUES (?,?,?,?)";
+        jdbcTemplate.update(sql, user.getName(),user.GetSurname(), user.getTckimlikno(), user.getBirthdate());
+        return user;
+    }
+
+
+
 }
