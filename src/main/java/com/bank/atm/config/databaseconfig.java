@@ -30,5 +30,5 @@ public class databaseconfig {
 //                dogumtarihi DATE,
 //                bakiye DECIMAL(99,2) DEFAULT 0.00
 //);
-
+    }
 }
