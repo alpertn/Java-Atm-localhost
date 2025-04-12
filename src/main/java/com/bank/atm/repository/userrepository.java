@@ -10,37 +10,42 @@ import java.util.Optional;
 @Repository
 public class userrepository {
 
-    private final JdbcTemplate jdbcTemplate; // databaseconfig.java kodundaki sql'e baglanır. sql ile ilgili olan şeyleri burdan yapabılırız.
+    private final JdbcTemplate jdbctemplate;
 
-    public userrepository(JdbcTemplate jdbcTemplate){
-        this.jdbcTemplate = jdbcTemplate;
+    public userrepository(JdbcTemplate jdbctemplate){ // database islemlerimiz icin jdbctemplate kullanıyoruz.
+        this.jdbctemplate = jdbctemplate;
+
     }
 
 
-    // Rowmapper sql'den gelen verileri cevirmeye yarar.
-    private final RowMapper<User> rowMapper = (rs, rowNum) -> {
-        User user = new User(); // user türünde
-        user.SetId(rs.getLong("id")); // sqlde kayıtlı olan id degiskenini LONG olarak alınıyor.
-        user.SetName(rs.getString("name"));
-        user.SetSurname(rs.getString("surname"));
-        user.SetTckimlikno(rs.getString("tckimlikno"));
-        user.SetBirthdate(rs.getDate("birth_date").toLocalDate());
-        return user;
+
+    //RowMapper ile sqlden aldıgımız verileri User Class'ına donusturuyoruz.
+    private final RowMapper<User> RowMapperUser = (resultset,rownum) ->{
+
+            User user = new User();
+
+            user.SetId(resultset.getLong("id")); // Sqlden ID'yi long olarak alıyor. User class'ında id'yi Long olarak tanımladım.
+            user.SetName(resultset.getString("ad"));
+            user.SetSurname(resultset.getString("soyad"));
+            user.SetTckimlikno(resultset.getString("tckimlikno"));
+            user.setPassword(resultset.getString("password"));
+            user.SetBirthdate(resultset.getDate("dogumtarihi").toLocalDate());
+            user.SetIban(resultset.getString("iban"));
+            user.setbalance(resultset.getFloat("bakiye"));
+
+            return user; // hazırladıgımız user degiskenini donduruyoruz.
+
+    };
+
+    public User save(User saveuser){
+
+        String tosql = "INSERT INTO Users (ad,soyad,sifre,iban,tckimlikno,dogumtarihi,balance) VALUES (?,?,?,?,?,?,?)"; // Insert ediyoruz.
+
+        jdbctemplate.update(tosql, saveuser.getName(),saveuser.getSurname());
+
+        return saveuser;
     };
 
 
-    // User türünde bir modül olusturduk. Save modülü User tipinde veri alıyor. sql stringi hazırladık. jdbctemplate ile ? yazılan yerlere user değişkeninin icindekileri aktardık.
-    public User Save(User user){
-        String sql = "INSERT INTO users (name, surname, tckimlikno, birthdate) VALUES (?,?,?,?)";
-
-        jdbcTemplate.update(sql, user.getName(),user.GetSurname(), user.getTckimlikno(), user.getBirthdate());
-        return user;
-    }
-
-
-    public Optional<User> findbyid(Long gelenid){
-        String sql = "SELECT * FROM users WHERE ID = ?";
-        return jdbcTemplate.query(sql, rowMapper, gelenid).stream().findFirst(); // .stream() kullanmayınca .findFirst() gibi methodları kullanamıyoruz. sql kodunu gönderiyor. veriyi rowmapper'e kaydediyor. ? diye bıraktıgımızı da id ile degistiriyor.
-    }
 
 }

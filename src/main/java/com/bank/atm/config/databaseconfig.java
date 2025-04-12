@@ -19,6 +19,16 @@ public class databaseconfig {
         datasource.setPassword("root");
         return datasource;
 
-    }
+//        use atm;
+//        CREATE TABLE User(
+//                id BIGINT AUTO_INCREMENT PRIMARY KEY,
+//                ad varchar(50),
+//                soyad varchar(50),
+//                sifre varchar(50),
+//                iban varchar(26),
+//                tckimlikno varchar(11),
+//                dogumtarihi DATE,
+//                bakiye DECIMAL(99,2) DEFAULT 0.00
+//);
 
 }
