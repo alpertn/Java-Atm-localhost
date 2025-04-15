@@ -6,79 +6,79 @@ import java.time.LocalDate;
 public class User {
 
     private Long id;
-    private String name;
-    private String surname;
-    private String tckimlikno;
+    private String ad;
+    private String soyad;
+    private String TCKN;
     private String iban;
-    private String password;
-    private LocalDate birthdate;
-    private float balance;
+    private String sifre;
+    private LocalDate dogumtarihi;
+    private float bakiye;
 
     public User() {}
 
-    public User(Long id,String name, String surname, String tckimlikno, LocalDate birthdate,String iban,String password, float newbalance) {
+    public User(Long id, String ad, String surname, String tckimlikno, LocalDate birthdate, String iban, String sifre, float newbalance) {
         this.id = id;
-        this.name = name;
-        this.surname = surname;
-        this.tckimlikno = tckimlikno;
-        this.birthdate = birthdate;
+        this.ad = ad;
+        this.soyad = surname;
+        this.TCKN = tckimlikno;
+        this.dogumtarihi = birthdate;
         this.iban = iban;
-        this.password = password;
-        this.balance = newbalance;
+        this.sifre = sifre;
+        this.bakiye = newbalance;
     }
 
-    public Long getId(){
+    public Long cekid(){
 
         return id;
     }
-    public void SetId(Long yeniid){
+    public void belirle_id(Long yeniid){
         this.id = yeniid;
     }
-    public String getName(){
-        return name;
+    public String cek_isim(){
+        return ad;
     }
-    public void SetName(String name){
-        this.name = name;
+    public void belirle_isim(String name){
+        this.ad = name;
     }
-    public String getSurname(){
-        return surname;
+    public String cek_soyad(){
+        return soyad;
     }
-    public void SetSurname(String surname){
-        this.surname = surname;
+    public void belirle_soyad(String surname){
+        this.soyad = surname;
 
     }
-    public String getTckimlikno(){
+    public String cek_tckn(){
 
-        return tckimlikno;
+        return TCKN;
     }
-    public void SetTckimlikno(String tckimlikno){
+    public void belirle_tckn(String tckimlikno){
 
-        this.tckimlikno = tckimlikno;
+        this.TCKN = tckimlikno;
     }
-    public LocalDate getBirthdate(){
-        return birthdate;
+    public LocalDate cek_dogumtarihi(){
+        return dogumtarihi;
     }
-    public void SetBirthdate(LocalDate birthdate){
-        this.birthdate = birthdate;
+    public void belirle_dogumtarihi(LocalDate birthdate){
+        this.dogumtarihi = birthdate;
     }
-    public String getIban(){
+    public String cek_iban(){
         return iban;
     }
-    public void SetIban(String iban){
+    public void belirle_iban(String iban){
         this.iban = iban;
     }
-    public String getPassword(){
-        return password;
+    public String cek_sifre(){
+        return sifre;
     }
-    public void setPassword(String yenisifre){
-        password = yenisifre;
+    public void belirle_sifre(String yenisifre){
+        sifre = yenisifre;
     }
-    public float getbalance(){
+    public float cek_bakiye(){
 
-        return balance;
+        return bakiye;
     }
-    public void setbalance(float newbalance){
-        balance = newbalance;
+    public void belirle_bakiye(float newbalance){
+        bakiye = newbalance;
     }
 
 }

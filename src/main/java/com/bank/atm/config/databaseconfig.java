@@ -14,7 +14,7 @@ public class databaseconfig {
     public DataSource DataSource() {
         DriverManagerDataSource datasource = new DriverManagerDataSource();
         datasource.setDriverClassName("com.mysql.jdbc.Driver");
-        datasource.setUrl("jdbc:mysql://localhost:3399/atm_db?useSSL=false"); // database baglantısı
+        datasource.setUrl("jdbc:mysql://localhost:3399/atm_db?useSSL=false"); // database baglantısı. Port 3399.
         datasource.setUsername("root");
         datasource.setPassword("root");
         return datasource;
@@ -31,4 +31,12 @@ public class databaseconfig {
 //                bakiye DECIMAL(99,2) DEFAULT 0.00
 //);
     }
+
+    @Bean
+    public JdbcTemplate jdbctemplate(){
+
+        return new JdbcTemplate(DataSource()); // databaseye baglanıyoruz. database ıslemlerınde @bean ise yarıyor.
+
+    }
+
 }
