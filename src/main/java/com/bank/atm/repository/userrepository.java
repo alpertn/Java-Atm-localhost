@@ -39,7 +39,7 @@ public class userrepository {
 
         String tosql = "INSERT INTO Users (ad,soyad,sifre,iban,tckimlikno,dogumtarihi,balance) VALUES (?,?,?,?,?,?,?)"; // Insert ediyoruz.
 
-        jdbctemplate.update(tosql, saveuser.cek_isim());
+        jdbctemplate.update(tosql, saveuser.cek_isim(), saveuser.cek_soyad(), saveuser.cek_sifre(), saveuser. cek_iban(),saveuser.cek_tckn(),saveuser.cek_dogumtarihi(),saveuser.cek_bakiye());
 
         return saveuser;
     };
