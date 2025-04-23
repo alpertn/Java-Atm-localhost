@@ -5,6 +5,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public class userrepository {
 
@@ -35,6 +37,7 @@ public class userrepository {
 
     };
 
+    // User türünde bir modül olusturduk. Save modülü User tipinde veri alıyor. sql stringi hazırladık. jdbctemplate ile ? yazılan yerlere user değişkeninin icindekileri aktardık.
     public User save(User saveuser){
 
         String tosql = "INSERT INTO Users (ad,soyad,sifre,iban,tckimlikno,dogumtarihi,balance) VALUES (?,?,?,?,?,?,?)"; // Insert ediyoruz.
@@ -44,6 +47,12 @@ public class userrepository {
         return saveuser;
     };
 
+    public Optional<User> idsorgu(Long gelenid){
 
+        String tosql = "SELECT * FROM User WHERE id = ?";
+        var sql = jdbctemplate.query(tosql, RowMapperUser, gelenid).stream().findFirst(); // .stream() kullanmayınca .findFirst() gibi methodları kullanamıyoruz. sql kodunu gönderiyor. veriyi rowmapper'e kaydediyor. ? diye bıraktıgımızı da id ile degistiriyor.
+
+        return sql; // sqlden gelen veriyi donduruyoruz.
+    }
 
 }
