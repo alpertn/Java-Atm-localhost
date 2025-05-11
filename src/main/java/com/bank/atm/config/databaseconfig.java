@@ -19,6 +19,15 @@ public class databaseconfig {
         datasource.setPassword("root");
         return datasource;
 
+    }
+
+    @Bean
+    public JdbcTemplate jdbctemplate(){
+
+        return new JdbcTemplate(DataSource()); // databaseye baglanıyoruz. database ıslemlerınde @bean ise yarıyor.
+
+    }
+
 //        use atm;
 //        CREATE TABLE User(
 //                id BIGINT AUTO_INCREMENT PRIMARY KEY,
@@ -30,13 +39,13 @@ public class databaseconfig {
 //                dogumtarihi DATE,
 //                bakiye DECIMAL(99,2) DEFAULT 0.00
 //);
-    }
-
-    @Bean
-    public JdbcTemplate jdbctemplate(){
-
-        return new JdbcTemplate(DataSource()); // databaseye baglanıyoruz. database ıslemlerınde @bean ise yarıyor.
-
-    }
+//
+//        CREATE TABLE transaction (
+//                id BIGINT AUTO_INCREMENT PRIMARY KEY,
+//                gondereniban VARCHAR(50),
+//                gonderileniban VARCHAR(50),
+//                bakiye DECIMAL(15,2),
+//                transfertarihi DATETIME
+//        );
 
 }

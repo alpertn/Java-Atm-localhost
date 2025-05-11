@@ -57,4 +57,6 @@ public class userrepository {
         return sql; // sqlden gelen veriyi donduruyoruz.
     }
 
+
+
 }

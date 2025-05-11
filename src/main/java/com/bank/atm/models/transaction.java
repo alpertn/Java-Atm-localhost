@@ -4,52 +4,58 @@ import java.time.LocalDateTime;
 
 public class transaction {
     private Long id;
-    private String fromIban;
-    private String toIban;
-    private double amount;
-    private LocalDateTime transactionDate;
-
+    private String gondereniban;
+    private String gonderileniban;
+    private double bakiye;
+    private LocalDateTime transfervtarihi;
 
     public transaction() {}
 
-    public transaction(String fromIban, String toIban, double amount) {
-        this.fromIban = fromIban;
-        this.toIban = toIban;
-        this.amount = amount;
-        this.transactionDate = LocalDateTime.now();
+    public transaction(Long id, String gondereniban, String gonderileniban, double bakiye) {
+        this.id = id;
+        this.gondereniban = gondereniban;
+        this.gonderileniban = gonderileniban;
+        this.bakiye = bakiye;
+        this.transfervtarihi = LocalDateTime.now();
     }
 
-
-
-    public Long getId() {
+    public Long cek_id() {
         return id;
     }
-    public void setId(Long id) {
+
+    public void belirle_id(Long id) {
         this.id = id;
     }
-    public String getFromIban() {
-        return fromIban;
-    }
-    public void setFromIban(String fromIban) {
-        this.fromIban = fromIban;
-    }
-    public String getToIban() {
-        return toIban;
-    }
-    public void setToIban(String toIban) {
-        this.toIban = toIban;
-    }
-    public double getAmount() {
-        return amount;
 
+    public String cek_gondereniban() {
+        return gondereniban;
     }
-    public void setAmount(double amount) {
-        this.amount = amount;
+
+    public void belirle_gondereniban(String geleniban) {
+        this.gondereniban = geleniban;
     }
-    public LocalDateTime getTransactionDate() {
-        return transactionDate;
+
+    public String cek_gonderilen() {
+        return gonderileniban;
     }
-    public void setTransactionDate(LocalDateTime transactionDate) {
-        this.transactionDate = transactionDate;
+
+    public void belirle_gonderileniban(String gonderileniban) {
+        this.gonderileniban = gonderileniban;
+    }
+
+    public double cek_bakiye() {
+        return bakiye;
+    }
+
+    public void belirle_bakiye(double bakiye) {
+        this.bakiye = bakiye;
+    }
+
+    public LocalDateTime cek_transvertarihi() {
+        return transfervtarihi;
+    }
+
+    public void belirle_transfertarihi(LocalDateTime transfervtarihi) {
+        this.transfervtarihi = transfervtarihi;
     }
 }
