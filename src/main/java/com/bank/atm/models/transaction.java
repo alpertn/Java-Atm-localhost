@@ -6,16 +6,16 @@ public class transaction {
     private Long id;
     private String gondereniban;
     private String gonderileniban;
-    private double bakiye;
+    private double islemtutari;
     private LocalDateTime transfervtarihi;
 
     public transaction() {}
 
-    public transaction(Long id, String gondereniban, String gonderileniban, double bakiye) {
+    public transaction(Long id, String gondereniban, String gonderileniban, double islemtutari) {
         this.id = id;
         this.gondereniban = gondereniban;
         this.gonderileniban = gonderileniban;
-        this.bakiye = bakiye;
+        this.islemtutari = islemtutari;
         this.transfervtarihi = LocalDateTime.now();
     }
 
@@ -43,12 +43,12 @@ public class transaction {
         this.gonderileniban = gonderileniban;
     }
 
-    public double cek_bakiye() {
-        return bakiye;
+    public double cek_islemtutari() {
+        return islemtutari;
     }
 
-    public void belirle_bakiye(double bakiye) {
-        this.bakiye = bakiye;
+    public void belirle_islemtutari(double bakiye) {
+        this.islemtutari = bakiye;
     }
 
     public LocalDateTime cek_transvertarihi() {

@@ -42,14 +42,14 @@ public class userrepository {
     // User türünde bir modül olusturduk. Save modülü User tipinde veri alıyor. sql stringi hazırladık. jdbctemplate ile ? yazılan yerlere user değişkeninin icindekileri aktardık.
     public User save(User saveuser){
 
-        String tosql = "INSERT INTO Users (ad,soyad,sifre,iban,tckimlikno,dogumtarihi,balance) VALUES (?,?,?,?,?,?,?)"; // Insert ediyoruz.
+        String tosql = "INSERT INTO User (ad,soyad,sifre,iban,tckimlikno,dogumtarihi,balance) VALUES (?,?,?,?,?,?,?)"; // Insert ediyoruz.
 
         jdbctemplate.update(tosql, saveuser.cek_isim(), saveuser.cek_soyad(), saveuser.cek_sifre(), saveuser. cek_iban(),saveuser.cek_tckn(),saveuser.cek_dogumtarihi(),saveuser.cek_bakiye());
 
         return saveuser;
     };
 
-    public Optional<User> idsorgu(Long gelenid){
+    public Optional<User> idsorgu(Long gelenid){ // user olarak donduruoruz.
 
         String tosql = "SELECT * FROM User WHERE id = ?";
         var sql = jdbctemplate.query(tosql, RowMapperUser, gelenid).stream().findFirst(); // .stream() kullanmayınca .findFirst() gibi methodları kullanamıyoruz. sql kodunu gönderiyor. veriyi rowmapper'e kaydediyor. ? diye bıraktıgımızı da id ile degistiriyor.
