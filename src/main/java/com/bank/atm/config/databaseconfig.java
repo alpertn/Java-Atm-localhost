@@ -26,8 +26,7 @@ public class databaseconfig {
 
 
         try (Connection connection = datasource.getConnection()) {
-            System.out.println(ANSI_GREEN + "---- Mysql Bağlantısı Başarılı! ----> connection.getMetaData().getURL()" + ANSI_RESET);
-            System.out.println( connection.getMetaData().getURL());
+            System.out.println(ANSI_GREEN + "---- Mysql Bağlantısı Başarılı! ----> "+ connection.getMetaData().getURL() + ANSI_RESET);
         } catch (SQLException e) {
             System.out.println(ANSI_RED + "MySql Bağlantısı Başarısız Oldu. Detaylar: " +  ANSI_RESET + e.getMessage());
         }

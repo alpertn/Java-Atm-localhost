@@ -8,6 +8,8 @@ import com.bank.atm.service.Iban;
 
 import java.util.Optional;
 
+
+
 @Repository
 public class userrepository {
 
@@ -57,6 +59,39 @@ public class userrepository {
         return sql; // sqlden gelen veriyi donduruyoruz.
     }
 
+    public Boolean DeleteUser(Long id){
+
+        String tosql = "DELETE FROM USER WHERE id = ?";
+
+        var sql = jdbctemplate.update(tosql , id);
+
+        if (sql > 0){
+
+            return true;
+
+        }else {
+
+            return false;
+
+        }
+
+    }
+
+    public Boolean Updatebakiye(float yenibakiye, Long id){
+
+        String tosql = "UPDATE user SET bakiye = ? WHERE id = ?";
+
+        var sql = jdbctemplate.update(tosql, yenibakiye,id);
+
+        if (sql > 0){
+            return true;
+        }else{
+            return false;
+        }
+
+
+
+    }
 
 
 }
