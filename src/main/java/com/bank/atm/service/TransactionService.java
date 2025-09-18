@@ -23,8 +23,8 @@ public class TransactionService {
 
     public void deposit(String iban, Float balance){
 
-        User usser = userrepository.findaccountbyiban(iban).get(); // hata vermemesı ıcın get ekledım.
 
+        User usser = userrepository.findaccountbyiban(iban).orElse(null); // hata veriyor fixlenecek.
 
 
     }

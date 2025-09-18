@@ -115,13 +115,13 @@ public class userrepository {
 
     }
 
-    public static Optional<User> findaccountbyiban(String iban){
+        public  Optional<User> findaccountbyiban(String iban){
 
-        String tosql = "SELECT * FROM User WHERE iban = ?";
-        Optional<User> user = jdbctemplate.query(tosql, RowMapperUser, iban).stream().findFirst();
+            String tosql = "SELECT * FROM User WHERE iban = ?";
+            Optional<User> user = jdbctemplate.query(tosql, RowMapperUser, iban).stream().findFirst();
 
-        return user;
-    }
+            return user;
+        }
 
 
 
