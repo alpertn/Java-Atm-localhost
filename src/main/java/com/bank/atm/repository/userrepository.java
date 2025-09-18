@@ -93,7 +93,6 @@ public class userrepository {
 
     }
 
-<<<<<<< HEAD
     public Long findid(){
 
         String tosql = "SELECT MAX(id) AS max_id FROM account;";
@@ -101,19 +100,11 @@ public class userrepository {
         var id = jdbctemplate.queryForObject(tosql, Long.class);
 
         return id;
-=======
-    public Long findid{
-
-        String tosql = "SELECT MAX(id) AS max_id FROM account;";
-
-        var id = jdbctemplate.query(tosql,);
->>>>>>> c0355576099ee360a7d78ed435a445447bcf63af
 
 
 
     }
 
-<<<<<<< HEAD
     public String findbyiban(String iban){
 
         var tosql = "SELECT * FROM USER WHERE iban = ?" ;
@@ -124,16 +115,14 @@ public class userrepository {
 
     }
 
-    public Optional<User> findaccountbyiban(String iban){
+    public static Optional<User> findaccountbyiban(String iban){
 
         String tosql = "SELECT * FROM User WHERE iban = ?";
-        var sql = jdbctemplate.query(tosql, RowMapperUser, iban).stream().findFirst();
+        Optional<User> user = jdbctemplate.query(tosql, RowMapperUser, iban).stream().findFirst();
 
-        return sql;
+        return user;
     }
 
-=======
->>>>>>> c0355576099ee360a7d78ed435a445447bcf63af
 
 
 }
