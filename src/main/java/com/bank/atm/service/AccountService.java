@@ -1,4 +1,4 @@
-package com.example.atm.service;
+package com.bank.atm.service;
 
 import com.bank.atm.models.User;
 import com.bank.atm.repository.transactionrepository;

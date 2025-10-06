@@ -32,51 +32,8 @@ public class databaseconfig {
         }
 
 
-        if (!tableExists(datasource.getConnection(),"Usder")){
-
-            try(Statement statement = datasource.getConnection().createStatement()) {
-
-                statement.execute(usertablesql);
-
-                System.out.println(ANSI_GREEN +"User isminde tablo oluşturuldu."+ ANSI_RESET);
-
-            }
-
-        }
-
-        if (!tableExists(datasource.getConnection(),"transaction")){
-
-            try(Statement statement = datasource.getConnection().createStatement()){
-
-                statement.execute(transactiontablesql);
-
-                System.out.println(ANSI_GREEN +"User isminde tablo oluşturuldu."+ ANSI_RESET);
-
-            }
-
-        }
-
 
         return datasource;
     }
-
-    private boolean tableExists(Connection connection, String tableName) throws SQLException {
-
-        DatabaseMetaData databaseMetaData = connection.getMetaData();
-        ResultSet resultSet = databaseMetaData.getTables(null, null, tableName, null);
-        return resultSet.next(); // varmı yokmu onu test ediyor.
-
-    }
-
-    @Bean
-    public JdbcTemplate jdbctemplate() throws SQLException {
-        return new JdbcTemplate(DataSource()); // databaseye baglanıyoruz. database ıslemlerınde @bean ise yarıyor.
-    }
-
-
-
-    String usertablesql = "CREATE TABLE User (id BIGINT AUTO_INCREMENT PRIMARY KEY,ad varchar(50),soyad varchar(50),sifre varchar(50),iban varchar(26),tckimlikno varchar(11),dogumtarihi DATE,bakiye DECIMAL(50,2) DEFAULT 0.00);";
-
-    String transactiontablesql = "CREATE TABLE transaction (id BIGINT AUTO_INCREMENT PRIMARY KEY,gondereniban VARCHAR(50),gonderileniban VARCHAR(50),islemtutari DECIMAL(50,2),transfertarihi DATETIME);";
 
 }
