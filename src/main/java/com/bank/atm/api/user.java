@@ -1,21 +1,18 @@
 package com.bank.atm.api;
 
 
-import com.bank.atm.models.transaction;
-import com.bank.atm.models.User;
 import com.bank.atm.repository.transactionrepository;
 import com.bank.atm.repository.userrepository;
-import com.bank.atm.repository.*;
 import com.bank.atm.service.AccountService;
 import com.bank.atm.service.TransactionService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
-import org.springframework.http.ResponseEntity;
+import com.bank.atm.dto.userdto;
+import com.bank.atm.security.clown;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import static com.bank.atm.security.sqlinjection.sqlinjectiontester;
 
 
 @RestController
@@ -28,18 +25,53 @@ public class user {
     private final TransactionService transactionservice;
 
 
-    public user (transactionrepository transactionepositoryi, userrepository userrepository, AccountService accountservice, TransactionService transactionservice) {
+    public user (transactionrepository transactionepositoryi, userrepository userrepository, AccountService accountservice, TransactionService transactionservice) { // constructor'a dto sınıfını koyunca hata verıyor dırekt cagırmamız lazım.
         this.transactionepositoryi = transactionepositoryi;
         this.userrepository = userrepository;
         this.accountservice = accountservice;
         this.transactionservice = transactionservice;
     }
+    @PostMapping("/createuser")
+    public ResponseEntity<?> createuser(@Valid
+                                        @RequestBody
+                                        userdto request,
+                                        BindingResult bindingresult
+                                        
+    ){
 
-//    @PostMapping("api/users/createuser")
-//    public ResponseEntity<?> createuser(@Valid
-//                                        @RequestBody
-//                                        user users
-//    )
+        if (sqlinjectiontester(String.valueOf(request)) == true)
+        {
+
+            return ResponseEntity.badRequest().body(clown.json());
+
+        }else{
+            if(bindingresult.hasErrors()){
+
+                return ResponseEntity.badRequest().build();
+
+            }else{
+                accountservice.createUser(request.getname(),request.getsurname(),request.gettckn(),request.getpassword(),request.getbirthdate());
+                return ResponseEntity.ok(request);// bırsey gerı dondurmek ıstersem build yazmıyorum ıstemıyorsam build yazıyorum status code donuyor sadece
+
+            }
+        }
+
+
+
+
+
+    }
+
+    // KOD calisiyor
+    // Hata ayıklama eklenecek
+    // örnek request
+    // {
+    //	"name": "alper",
+    //    "surname": "karakus",
+    //    "tckn": "51182934422",
+    //    "password" : "alperkarakus07",
+    //    "birthdate": "2007-05-25"
+    //}
 
 
 

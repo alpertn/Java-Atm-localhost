@@ -35,7 +35,7 @@ public class userrepository {
         user.belirle_sifre(resultset.getString("password"));
         user.belirle_dogumtarihi(resultset.getDate("dogumtarihi").toLocalDate());
         user.belirle_iban(resultset.getString("iban"));
-        user.belirle_bakiye(resultset.getFloat("bakiye"));
+        user.belirle_bakiye(resultset.getFloat("balance"));
 
         return user; // hazırladıgımız user degiskenini donduruyoruz.
 
@@ -44,7 +44,7 @@ public class userrepository {
     // User türünde bir modül olusturduk. Save modülü User tipinde veri alıyor. sql stringi hazırladık. jdbctemplate ile ? yazılan yerlere user değişkeninin icindekileri aktardık.
     public User save(User saveuser){
 
-        String tosql = "INSERT INTO User (ad,soyad,sifre,iban,tckimlikno,dogumtarihi,balance) VALUES (?,?,?,?,?,?,?)"; // Insert ediyoruz.
+        String tosql = "INSERT INTO User (ad,soyad,password,iban,tckimlikno,dogumtarihi,balance) VALUES (?,?,?,?,?,?,?)"; // Insert ediyoruz.
 
         jdbctemplate.update(tosql, saveuser.cek_isim(), saveuser.cek_soyad(), saveuser.cek_sifre(), saveuser. cek_iban(),saveuser.cek_tckn(),saveuser.cek_dogumtarihi(),saveuser.cek_bakiye());
 
@@ -95,9 +95,12 @@ public class userrepository {
 
     public Long findid(){
 
-        String tosql = "SELECT MAX(id) AS max_id FROM account;";
+        String tosql = "SELECT MAX(id) AS max_id FROM user;";
 
         var id = jdbctemplate.queryForObject(tosql, Long.class);
+        if (id ==null ){ // databasede verı olmayınca hata verıyor oyuzden +1 ypamak zorunlu
+            return 1L;
+        }
 
         return id;
 

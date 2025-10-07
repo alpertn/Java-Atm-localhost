@@ -3,14 +3,10 @@ package com.bank.atm.service;
 import com.bank.atm.models.User;
 import com.bank.atm.repository.transactionrepository;
 import com.bank.atm.repository.userrepository;
-import com.bank.atm.models.transaction;
-import com.bank.atm.service.Iban;
-import com.bank.atm.service.TransactionService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Service
 public class AccountService {
@@ -26,7 +22,7 @@ public class AccountService {
     }
 
     @Transactional
-    public User createUser(Long id, String ad, String surname, String tckimlikno, LocalDate birthdate, String sifre, float balance){
+    public User createUser(String ad, String surname, String tckimlikno, String sifre ,LocalDate birthdate){
 
         String iban = Iban.createiban();
 
