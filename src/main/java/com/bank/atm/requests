@@ -1,0 +1,58 @@
+----- http://localhost:8080/api/admin/updatebalancewithiban
+
+{
+
+    "iban" : "TR064556002433370544604425",
+    "balance" : "1000000",
+    "adminname" : "root",
+    "adminpassword" : "root"
+
+
+}
+
+----- http://localhost:8080/api/user/createnewuser
+
+{
+    	"name": "alper",
+        "surname": "karakus",
+        "tckn": "51182934422",
+        "password" : "alperkarakus07",
+        "birthdate": "2007-05-25"
+}
+
+----- http://localhost:8080/api/admin/findidwithiban
+
+{
+
+    "iban" : "TR064556002433370544604425",
+    "adminname" : "root",
+    "adminpassword" : "root"
+
+
+}
+
+--- DONDURDUGU VERI
+
+{
+    "id": "1"
+}
+
+-NOT : return ResponseEntity.ok(Map.of("id" , id));  yani java.util.map kullandigim icin json donduruyor yapmazsam sadece 1 donduruyor
+
+------ http://localhost:8080/api/admin/updatebalancewithid
+
+
+{
+
+    "id" : "3",
+    "balance" : "12000000",
+    "adminname" : "root",
+    "adminpassword" : "root"
+
+
+}
+
+-- DONDURDUGU VERI
+{
+    "status": "1"
+}

@@ -77,11 +77,27 @@ public class userrepository {
 
     }
 
-    public Boolean Updatebakiye(float yenibakiye, Long id){
+    public Boolean Updatebakiye(float yenibakiye, String id){
 
-        String tosql = "UPDATE user SET bakiye = ? WHERE id = ?";
+        String tosql = "UPDATE user SET balance = ? WHERE id = ?";
 
         var sql = jdbctemplate.update(tosql, yenibakiye,id);
+
+        if (sql > 0){
+            return true;
+        }else{
+            return false;
+        }
+
+
+
+    }
+
+    public Boolean updatebalancewithiban(float yenibakiye, String iban){
+
+        String tosql = "UPDATE user SET balance = ? WHERE iban = ?";
+
+        var sql = jdbctemplate.update(tosql, yenibakiye,iban);
 
         if (sql > 0){
             return true;
@@ -108,11 +124,11 @@ public class userrepository {
 
     }
 
-    public String findbyiban(String iban){
+    public Optional<User> findbyiban(String iban){
 
         var tosql = "SELECT * FROM USER WHERE iban = ?" ;
 
-        String ibann = jdbctemplate.queryForObject(tosql, String.class);
+        var ibann = jdbctemplate.query(tosql, RowMapperUser).stream().findFirst();
         return ibann;
 
 
@@ -125,6 +141,18 @@ public class userrepository {
 
         return user;
     }
+
+    public String findbyiban2(String iban){
+
+        var tosql = "SELECT id FROM user WHERE iban = ?" ;
+
+        var ibann = jdbctemplate.queryForObject(tosql, String.class, iban).toString();
+        return ibann;
+
+
+    }
+
+
 
 
 

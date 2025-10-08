@@ -12,7 +12,7 @@ import com.bank.atm.dto.userdto;
 import com.bank.atm.security.clown;
 import org.springframework.validation.BindingResult;
 
-import static com.bank.atm.security.sqlinjection.sqlinjectiontester;
+import com.bank.atm.security.sqlinjectiontester;
 
 
 @RestController
@@ -39,22 +39,29 @@ public class user {
                                         
     ){
 
-        if (sqlinjectiontester(String.valueOf(request)) == true)
+        if (sqlinjectiontester.isSqlInjection(request.getname() + request.getsurname() + request.getbirthdate() +  request.getpassword() +request.gettckn()) == true)
         {
 
             return ResponseEntity.badRequest().body(clown.json());
 
+
         }else{
+            System.out.println(
+                    request.getname() + request.getsurname() + request.getbirthdate() +  request.getpassword() +request.gettckn()
+            );
             if(bindingresult.hasErrors()){
 
                 return ResponseEntity.badRequest().build();
 
             }else{
+
                 accountservice.createUser(request.getname(),request.getsurname(),request.gettckn(),request.getpassword(),request.getbirthdate());
                 return ResponseEntity.ok(request);// bırsey gerı dondurmek ıstersem build yazmıyorum ıstemıyorsam build yazıyorum status code donuyor sadece
 
             }
+
         }
+
 
 
 

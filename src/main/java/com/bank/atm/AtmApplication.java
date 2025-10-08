@@ -32,5 +32,11 @@ public class AtmApplication {
 //    balance FLOAT DEFAULT 0
 //);
 
+//localhost:8080/api/user/createuser
 //
+//	CREATE TABLE admin (
+//		id BIGINT PRIMARY KEY AUTO_INCREMENT,
+//		adminname VARCHAR(100) NOT NULL,
+//	adminpassword VARCHAR(100) NOT NULL)
 
+//insert into admin (adminname , adminpassword) VALUES ("root","root");
