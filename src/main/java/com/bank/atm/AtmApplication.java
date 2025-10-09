@@ -1,4 +1,5 @@
 package com.bank.atm;
+import com.bank.atm.repository.userrepository;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,8 +8,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class AtmApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AtmApplication.class, args);
+
+        SpringApplication.run(AtmApplication.class, args);
+        var a = userrepository.idsorgu(Long.valueOf(1L));
+        System.out.println(a);
+
 	}
+
 
 }
 

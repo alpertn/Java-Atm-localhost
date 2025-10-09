@@ -81,4 +81,16 @@ public class User {
         bakiye = newbalance;
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", ad='" + ad + '\'' +
+                ", soyad='" + soyad + '\'' +
+                ", iban='" + iban + '\'' +
+                ", tckimlikno='" + TCKN + '\'' +
+                ", dogumtarihi='" + dogumtarihi + '\'' +
+                ", balance=" + bakiye +
+                '}';
+    }
 }

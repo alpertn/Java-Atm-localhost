@@ -51,7 +51,7 @@ public class userrepository {
         return saveuser;
     };
 
-    public Optional<User> idsorgu(Long gelenid){ // user olarak donduruoruz.
+    public static Optional<User> idsorgu(Long  gelenid){ // user olarak donduruoruz.
 
         String tosql = "SELECT * FROM User WHERE id = ?";
         var sql = jdbctemplate.query(tosql, RowMapperUser, gelenid).stream().findFirst(); // .stream() kullanmayınca .findFirst() gibi methodları kullanamıyoruz. sql kodunu gönderiyor. veriyi rowmapper'e kaydediyor. ? diye bıraktıgımızı da id ile degistiriyor.
