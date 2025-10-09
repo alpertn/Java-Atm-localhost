@@ -87,3 +87,28 @@
 
 
 //fınduserwıthıd fıxlenecek Optional[User{id=1, ad='alper', soyad='karakus', iban='TR064556002433370544604425', tckimlikno='51182934422', dogumtarihi='2007-05-25', balance=1.2E7}]
+
+
+
+------http://localhost:8080/api/admin/deleteuserwithid
+
+
+{
+
+    "id" : "311",
+    "adminname" : "root",
+    "adminpassword" : "root"
+
+
+}
+
+GONDERDIGI VERI
+
+{
+    "status": "0"
+}
+veya
+
+{
+    "status": "1"
+}
