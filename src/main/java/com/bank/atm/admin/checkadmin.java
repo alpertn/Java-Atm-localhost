@@ -18,16 +18,11 @@ public class checkadmin {
 
     public Boolean checkadmin(String name, String password){
 
-        String tosql = "select  COUNT(*) from admin WHERE adminname = ? AND adminpassword = ?";
+        String sql = "SELECT COUNT(*) FROM admin WHERE adminname = ? AND adminpassword = ?";
 
-        var jdbctemplate = jdbcTemplate.queryForObject(tosql,Integer.class ,name,password);
+        Integer count = jdbcTemplate.queryForObject(sql, Integer.class, name, password);
 
-        if (jdbctemplate == null && jdbctemplate < 0){
-            return false;
-        }else{
-            return true;
-        }
-
+        return count != null && count > 0; //if ile yaptıgımda calısmadı
     }
 
 
