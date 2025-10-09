@@ -10,7 +10,7 @@
 
 }
 
------ http://localhost:8080/api/user/createnewuser
+----- http://localhost:8080/api/user/createuser
 
 {
     	"name": "alper",
@@ -112,3 +112,35 @@ veya
 {
     "status": "1"
 }
+
+
+------ http://localhost:8080/api/admin/finduserwithiban
+
+
+gonderilen
+
+{
+
+    "iban" : "TR197161791918570541333863",
+    "adminname" : "root",
+    "adminpassword" : "root"
+
+
+}
+
+
+gelen
+
+{
+    "iban": "TR197161791918570541333863",
+    "balance": 48.0,
+    "tckn": "51325934422",
+    "password": "alperkarakus07",
+    "name": "alper",
+    "birthdate": "2007-05-25",
+    "surname": "karakus"
+}
+
+
+// tc ve sifre ile dogrulama eklenecek
+//para yatırma eklenecek admın transfer normal transfer eklenecek

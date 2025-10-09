@@ -44,3 +44,7 @@ public class AtmApplication {
 //	adminpassword VARCHAR(100) NOT NULL)
 
 //insert into admin (adminname , adminpassword) VALUES ("root","root");
+
+
+// tc ve sifre ile dogrulama eklenecek
+//para yatırma eklenecek admın transfer normal transfer eklenecek

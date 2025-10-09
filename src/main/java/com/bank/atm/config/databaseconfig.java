@@ -11,24 +11,24 @@ import java.sql.*;
 @Configuration
 public class databaseconfig {
 
-    private static final String ANSI_RESET = "\u001B[0m";
-    private static final String ANSI_GREEN = "\u001B[32m";
-    private static final String ANSI_RED = "\u001B[31m";
+    private String reset = "\u001B[0m";
+    private String green = "\u001B[32m";
+    private  String red = "\u001B[31m";
 
     @Bean
     public DataSource DataSource() throws SQLException { // QLException hata vermemesı ıcın
 
         DriverManagerDataSource datasource = new DriverManagerDataSource();
         datasource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        datasource.setUrl("jdbc:mysql://localhost:3331/atm?useSSL=false"); // database baglantısı. Port 3399.
+        datasource.setUrl("jdbc:mysql://localhost:3331/atm?useSSL=false");
         datasource.setUsername("root");
         datasource.setPassword("root");
 
 
         try (Connection connection = datasource.getConnection()) {
-            System.out.println(ANSI_GREEN + "---- Mysql Bağlantısı Başarılı! ----> "+ connection.getMetaData().getURL() + ANSI_RESET);
+            System.out.println(green + "---- Mysql Bağlantısı Başarılı! ----> "+ connection.getMetaData().getURL() + reset);
         } catch (SQLException e) {
-            System.out.println(ANSI_RED + "MySql Bağlantısı Başarısız Oldu. Detaylar: " +  ANSI_RESET + e.getMessage());
+            System.out.println(red + "MySql Bağlantısı Başarısız Oldu. Detaylar: " +  reset + e.getMessage());
         }
 
 

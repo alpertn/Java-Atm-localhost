@@ -31,7 +31,7 @@ public class TransactionService {
     }
 
     @Transactional
-    public void para_yatırma(String iban, Double miktar){
+    public void para_yatırma(String iban, Float miktar){
 
 
         Double balance = transactionRepository.ibantobalance(iban);
@@ -43,7 +43,7 @@ public class TransactionService {
     }
 
     @Transactional
-    public void transfer(String gondereniban , String alıcıiban, Double miktar){
+    public void transfer(String gondereniban , String alıcıiban, Float miktar){
 
         Double gonderenbalance = transactionRepository.ibantobalance(gondereniban);
 

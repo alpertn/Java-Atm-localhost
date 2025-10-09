@@ -50,6 +50,10 @@
             <scope>runtime</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
         <!-- H2: Hafızada çalışan veritabanı (test/development için) -->
         <dependency>
             <groupId>com.h2database</groupId>
