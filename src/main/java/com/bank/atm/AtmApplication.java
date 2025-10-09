@@ -9,9 +9,7 @@ public class AtmApplication {
 
 	public static void main(String[] args) {
 
-        SpringApplication.run(AtmApplication.class, args);
-        var a = userrepository.idsorgu(Long.valueOf(1L));
-        System.out.println(a);
+
 
 	}
 

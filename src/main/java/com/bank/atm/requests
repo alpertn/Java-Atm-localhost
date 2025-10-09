@@ -56,3 +56,34 @@
 {
     "status": "1"
 }
+
+----- http://localhost:8080/api/admin/finduserwithid
+
+
+{
+
+    "id" : "1",
+    "adminname" : "root",
+    "adminpassword" : "root"
+
+
+}
+
+
+-- gelen veri
+
+{
+    "iban": "TR064556002433370544604425",
+    "tckn": "51182934422",
+    "balance": 1.2E7,
+    "name": "alper",
+    "birthdate": "2007-05-25",
+    "password": "alperkarakus07",
+    "surname": "karakus"
+}
+
+
+
+
+
+//fınduserwıthıd fıxlenecek Optional[User{id=1, ad='alper', soyad='karakus', iban='TR064556002433370544604425', tckimlikno='51182934422', dogumtarihi='2007-05-25', balance=1.2E7}]

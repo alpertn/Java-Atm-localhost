@@ -63,11 +63,9 @@ public class finduserwithid {
 
                     var userOpt = userrepository.idsorgu(Long.valueOf(request.getid()));
 
-                    if (userOpt.isPresent()) {
-                        return ResponseEntity.ok(userOpt.get()); // User objesini JSON olarak döner
-                    } else {
-                        return ResponseEntity.status(404).body(Map.of("error", "User not found"));
-                    }
+                        return ResponseEntity.ok(userOpt.get());
+
+
 
                 }else{
 
