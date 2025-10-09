@@ -27,14 +27,14 @@ public class AccountService {
         String iban = Iban.createiban();
 
         User user = new User();
-        user.belirle_bakiye('0');
-        user.belirle_sifre(sifre);
-        user.belirle_id(userrepository.findid() + 1);
-        user.belirle_isim(ad);
-        user.belirle_tckn(tckimlikno);
-        user.belirle_soyad(surname);
-        user.belirle_dogumtarihi(birthdate);
-        user.belirle_iban(iban);
+        user.setbalance('0');
+        user.setpassword(sifre);
+        user.setid(userrepository.findid() + 1);
+        user.setname(ad);
+        user.settckn(tckimlikno);
+        user.setsurname(surname);
+        user.setbirthdate(birthdate);
+        user.setiban(iban);
 
         return userrepository.save(user);
 

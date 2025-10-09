@@ -31,53 +31,53 @@ public class User {
 
         return id;
     }
-    public void belirle_id(Long yeniid){
+    public void setid(Long yeniid){
         this.id = yeniid;
     }
-    public String cek_isim(){
+    public String getname(){
         return ad;
     }
-    public void belirle_isim(String name){
+    public void setname(String name){
         this.ad = name;
     }
-    public String cek_soyad(){
+    public String getsurname(){
         return soyad;
     }
-    public void belirle_soyad(String surname){
+    public void setsurname(String surname){
         this.soyad = surname;
 
     }
-    public String cek_tckn(){
+    public String gettckn(){
 
         return TCKN;
     }
-    public void belirle_tckn(String tckimlikno){
+    public void settckn(String tckimlikno){
 
         this.TCKN = tckimlikno;
     }
-    public LocalDate cek_dogumtarihi(){
+    public LocalDate getbirthdate(){
         return dogumtarihi;
     }
-    public void belirle_dogumtarihi(LocalDate birthdate){
+    public void setbirthdate(LocalDate birthdate){
         this.dogumtarihi = birthdate;
     }
-    public String cek_iban(){
+    public String getiban(){
         return iban;
     }
-    public void belirle_iban(String iban){
+    public void setiban(String iban){
         this.iban = iban;
     }
-    public String cek_sifre(){
+    public String getpassword(){
         return sifre;
     }
-    public void belirle_sifre(String yenisifre){
+    public void setpassword(String yenisifre){
         sifre = yenisifre;
     }
-    public float cek_bakiye(){
+    public float getbalance(){
 
         return bakiye;
     }
-    public void belirle_bakiye(float newbalance){
+    public void setbalance(float newbalance){
         bakiye = newbalance;
     }
 
