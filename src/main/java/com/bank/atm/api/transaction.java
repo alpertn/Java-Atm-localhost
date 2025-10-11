@@ -8,10 +8,10 @@ import com.bank.atm.service.TransactionService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
-import com.bank.atm.dto.userdto;
+import com.bank.atm.dto.transactiondto;
 import com.bank.atm.security.clown;
 import org.springframework.validation.BindingResult;
-
+import java.util.Map;
 import com.bank.atm.security.sqlinjectiontester;
 
 
@@ -19,7 +19,7 @@ import com.bank.atm.security.sqlinjectiontester;
 @RequestMapping("api/transaction")
 public class transaction {
 
-    private final transactionrepository transactionepositoryi; // kullanabilmek icin bunu yaziyoruz
+    private final transactionrepository transactionepositoryi;
     private final userrepository userrepository;
     private final AccountService accountservice;
     private final TransactionService transactionservice;
@@ -31,42 +31,72 @@ public class transaction {
         this.accountservice = accountservice;
         this.transactionservice = transactionservice;
     }
-    @PostMapping("/createuser")
+    @PostMapping("/sendmoney")
     public ResponseEntity<?> createuser(@Valid
                                         @RequestBody
-                                        userdto request,
+                                        transactiondto request,
                                         BindingResult bindingresult
 
     ){
 
-        if (sqlinjectiontester.isSqlInjection(request.getname() + request.getsurname() + request.getbirthdate() +  request.getpassword() +request.gettckn()) == true)
+        if (sqlinjectiontester.isSqlInjection(request.getbalance() + request.getiban() + request.gettckn() +  request.getpassword() +request.gettckn()) == true)
         {
 
             return ResponseEntity.badRequest().body(clown.json());
 
 
         }else{
-            System.out.println(
-                    request.getname() + request.getsurname() + request.getbirthdate() +  request.getpassword() +request.gettckn()
-            );
-            if(bindingresult.hasErrors()){
+            if(transactionepositoryi.tckndogrula(request.gettckn(),request.getpassword()) == true){
 
-                return ResponseEntity.badRequest().build();
+
+                if (transactionepositoryi.findibanwithtckn(request.gettckn()) != null){
+
+
+                    if(bindingresult.hasErrors()){
+
+                        return ResponseEntity.badRequest().build();
+
+                    }else{
+
+                        String iban = transactionepositoryi.findibanwithtckn(request.gettckn());
+                                try{
+                                   Float balance = Float.parseFloat(request.getbalance() );
+
+
+
+                                   if(transactionservice.transfer(iban,request.getiban(),balance) == true){
+
+
+                                       return ResponseEntity.ok(Map.of("Status","1"));
+
+                                   }else{
+
+                                       return ResponseEntity.badRequest().build();
+                                   }
+
+
+                                }catch (NumberFormatException e){
+
+                                    return ResponseEntity.badRequest().body(Map.of("error", "number format exception"));
+                                }
+
+
+                    }
+
+                }
+
 
             }else{
 
-                accountservice.createUser(request.getname(),request.getsurname(),request.gettckn(),request.getpassword(),request.getbirthdate());
-                return ResponseEntity.ok(request);
+                return ResponseEntity.badRequest().body(Map.of("status","0"));
 
             }
+
 
         }
 
 
-
-
-
-
+         return ResponseEntity.badRequest().body(Map.of("status","0"));
     }
 
 

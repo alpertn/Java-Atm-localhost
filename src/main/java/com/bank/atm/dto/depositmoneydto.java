@@ -1,10 +1,9 @@
 package com.bank.atm.dto;
 
-public class transactiondto {
+public class depositmoneydto {
 
     private String tckn;
     private String password;
-    private String iban;
     private String balance;
 
     public String gettckn() {
@@ -13,10 +12,6 @@ public class transactiondto {
 
     public String getpassword() {
         return password;
-    }
-
-    public String getiban() {
-        return iban;
     }
 
     public String getbalance() {
@@ -29,10 +24,6 @@ public class transactiondto {
 
     public void setpassword(String password) {
         this.password = password;
-    }
-
-    public void setiban(String iban) {
-        this.iban = iban;
     }
 
     public void setbalance(String balance) {

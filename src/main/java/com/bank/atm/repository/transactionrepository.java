@@ -43,7 +43,7 @@ public class transactionrepository {
 
     public Boolean updatebalancewithiban(double yenibakiye, String iban){
 
-        String tosql = "UPDATE user SET bakiye = ? WHERE iban = ?";
+        String tosql = "UPDATE user SET balance = ? WHERE iban = ?";
 
         var sql = jdbctemplate.update(tosql, yenibakiye,iban);
 
@@ -57,7 +57,7 @@ public class transactionrepository {
 
     public double ibantobalance(String iban){
 
-        String tosql = "select bakiye from user where iban = ?;";
+        String tosql = "select balance from user where iban = ?;";
 
         Double sql = jdbctemplate.queryForObject(tosql,new Object[]{iban}, Double.class); // new Object[]{iban} yazmayınca hata verdı
 
@@ -97,6 +97,40 @@ public class transactionrepository {
 
         return sql;
 
+    }
+    public Boolean tckndogrula(String tckn , String password){
+
+
+        var tosql = "SELECT COUNT(*) FROM user WHERE tckimlikno = ? AND password = ?";
+
+
+        var count = jdbctemplate.queryForObject(tosql,Integer.class,tckn,password);
+        if (count == 1){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
+    public String findibanwithtckn(String tckn){
+
+        var tosql = "SELECT iban from user where tckimlikno = ?";
+
+        String sql = jdbctemplate.queryForObject(tosql,String.class,tckn);
+
+        return sql;
+
+
+    }
+
+    public Boolean parayatirmatckn(String tckn, Float balance) {
+
+        String tosql = "UPDATE user SET balance = balance + ? WHERE tckimlikno = ?";
+
+        int sql = jdbctemplate.update(tosql, balance, tckn);
+
+        return sql > 0; // if kullanmaya gerke yok
     }
 
 }

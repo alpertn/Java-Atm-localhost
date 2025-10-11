@@ -1,4 +1,29 @@
------ http://localhost:8080/api/admin/updatebalancewithiban
+create database atm;
+use atm;
+CREATE TABLE user (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    ad VARCHAR(100) NOT NULL,
+    soyad VARCHAR(100) NOT NULL,
+    tckimlikno VARCHAR(11) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    dogumtarihi DATE NOT NULL,
+    iban VARCHAR(34) UNIQUE NOT NULL,
+    balance FLOAT DEFAULT 0
+);
+
+
+	CREATE TABLE admin (
+		id BIGINT PRIMARY KEY AUTO_INCREMENT,
+		adminname VARCHAR(100) NOT NULL,
+	adminpassword VARCHAR(100) NOT NULL)
+
+insert into admin (adminname , adminpassword) VALUES ("root","root");
+
+
+
+
+
+    ----- http://localhost:8080/api/admin/updatebalancewithiban
 
 {
 
@@ -84,12 +109,6 @@
 
 
 
-
-
-//fınduserwıthıd fıxlenecek Optional[User{id=1, ad='alper', soyad='karakus', iban='TR064556002433370544604425', tckimlikno='51182934422', dogumtarihi='2007-05-25', balance=1.2E7}]
-
-
-
 ------http://localhost:8080/api/admin/deleteuserwithid
 
 
@@ -142,5 +161,17 @@ gelen
 }
 
 
-// tc ve sifre ile dogrulama eklenecek
-//para yatırma eklenecek admın transfer normal transfer eklenecek
+-----http://localhost:8080/api/user/depositmoney
+
+{
+
+    "tckn" : "51182934422",
+    "password" : "alperkarakus07",
+    "balance" : "1000"
+
+
+}
+
+{
+    "status": "1"
+}
